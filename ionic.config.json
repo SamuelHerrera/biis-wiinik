@@ -1,6 +1,9 @@
 {
   "name": "biis_wiinik",
-  "integrations": {},
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
   "type": "angular",
   "id": "50a4f97d"
 }
