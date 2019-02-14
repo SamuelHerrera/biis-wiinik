@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Geolocation, Geoposition } from '@ionic-native/geolocation/ngx';
-import { NavController, MenuController } from '@ionic/angular';
+import { NavController, MenuController, ModalController } from '@ionic/angular';
+import { ObservablesService } from '../services/observables.service';
+import { MainModalComponent } from './components/main-modal/main-modal.component';
 
 declare var google;
 
@@ -18,7 +20,10 @@ export class HomePage implements OnInit {
   myLatLng: any;
   waypoints: any[];
 
-  constructor(public navCtrl: NavController, public geolocation: Geolocation, private menu: MenuController) {
+  constructor(public navCtrl: NavController,
+    public geolocation: Geolocation,
+    public modalController: ModalController,
+    private observableService: ObservablesService) {
 
     this.directionsService = new google.maps.DirectionsService();
     this.directionsDisplay = new google.maps.DirectionsRenderer();
@@ -37,8 +42,24 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getPosition();
+    // this.getPosition();
   }
+
+  async openModal() {
+    const data = {};
+    const activeComponent: Component = null; // I need to determine wich component needs to be displayed;
+
+    const modal = await this.modalController.create({
+      component: MainModalComponent,
+      mode: 'ios',
+      keyboardClose: true,
+      showBackdrop: true,
+      animated: true,
+      componentProps: { activeComponent: activeComponent, data: data }
+    });
+    return await modal.present();
+  }
+
 
 
   getPosition(): any {
@@ -109,10 +130,4 @@ export class HomePage implements OnInit {
     });
 
   }
-
-  public openFirst() {
-    this.menu.enable(true, 'first');
-    this.menu.open('first');
-  }
-
 }

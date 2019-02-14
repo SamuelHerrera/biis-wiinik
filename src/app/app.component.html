@@ -1,3 +1,13 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-menu side="start" menuId="main-menu" type="overlay">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Biis Wiinik</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <app-main-menu></app-main-menu>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet main></ion-router-outlet>
 </ion-app>
