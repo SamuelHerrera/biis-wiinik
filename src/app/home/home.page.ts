@@ -3,6 +3,7 @@ import { Geolocation, Geoposition } from '@ionic-native/geolocation/ngx';
 import { NavController, MenuController, ModalController } from '@ionic/angular';
 import { ObservablesService } from '../services/observables.service';
 import { MainModalComponent } from './components/main-modal/main-modal.component';
+import { OnTheRoadComponent } from './components/on-the-road/on-the-road.component';
 
 declare var google;
 
@@ -47,7 +48,7 @@ export class HomePage implements OnInit {
 
   async openModal() {
     const data = {};
-    const activeComponent: Component = null; // I need to determine wich component needs to be displayed;
+    const activeComponent: any = OnTheRoadComponent; // I need to determine wich component needs to be displayed;
 
     const modal = await this.modalController.create({
       component: MainModalComponent,

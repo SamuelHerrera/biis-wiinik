@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
 import { MainModalComponent } from './components/main-modal/main-modal.component';
+import { OnTheRoadComponent } from './components/on-the-road/on-the-road.component';
+import { IdleComponent } from './components/idle/idle.component';
 
 @NgModule({
   imports: [
@@ -19,7 +21,7 @@ import { MainModalComponent } from './components/main-modal/main-modal.component
       }
     ])
   ],
-  declarations: [HomePage, MainModalComponent],
-  entryComponents: [MainModalComponent]
+  declarations: [HomePage, MainModalComponent, OnTheRoadComponent, IdleComponent],
+  entryComponents: [MainModalComponent, OnTheRoadComponent]
 })
 export class HomePageModule { }
